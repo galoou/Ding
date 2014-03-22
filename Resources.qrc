@@ -3,4 +3,7 @@
         <file>media-playback-start.png</file>
         <file>media-playback-stop.png</file>
     </qresource>
+    <qresource prefix="/sounds">
+        <file>bell.wav</file>
+    </qresource>
 </RCC>

@@ -25,6 +25,7 @@ public slots:
     void stop();
 
 private slots:
+    void resetElapsedTime();
     void incrementElapsedTime();
     void bell();
 };

@@ -1,15 +1,13 @@
 #include "ding.h"
 
-#include <QApplication>
-#include <QDir>
 #include <QSound>
 
 Ding::Ding(QObject *parent, int interval) :
     QObject(parent)
 {
-    this->timer = new QTimer(this);
+    this->interval    = interval;
+    this->timer       = new QTimer(this);
     this->elapsedTime = 0;
-    this->interval = interval;
 
     connect(timer, SIGNAL(timeout()), this, SLOT(incrementElapsedTime()));
 }
@@ -35,6 +33,11 @@ void Ding::stop()
 {
     timer->stop();
 
+    resetElapsedTime();
+}
+
+void Ding::resetElapsedTime()
+{
     elapsedTime = 0;
     emit elapsedTimeChanged(elapsedTime);
 }
@@ -49,15 +52,10 @@ void Ding::incrementElapsedTime()
 
     bell();
 
-    elapsedTime = 0;
-    emit elapsedTimeChanged(elapsedTime);
+    resetElapsedTime();
 }
 
 void Ding::bell()
 {
-    QDir dir(QApplication::applicationDirPath());
-    dir.cdUp();
-    dir.cd("Resources");
-
-    QSound::play(dir.filePath("bell.wav"));
+    QSound::play(":/sounds/bell.wav");
 }

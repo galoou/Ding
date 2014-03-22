@@ -1,33 +1,24 @@
-#-------------------------------------------------
-#
-# Project created by QtCreator 2013-12-24T21:33:50
-#
-#-------------------------------------------------
+QT           += core widgets multimedia
 
-QT       += core gui
+TARGET        = Ding
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+TEMPLATE      = app
 
-TARGET = Ding
-TEMPLATE = app
+SOURCES      += main.cpp mainwindow.cpp ding.cpp
 
+HEADERS      += mainwindow.h ding.h
 
-SOURCES += main.cpp\
-        mainwindow.cpp \
-    ding.cpp
+FORMS        += mainwindow.ui
 
-HEADERS  += mainwindow.h \
-    ding.h
+macx:ICON     = bell.icns
 
-FORMS    += mainwindow.ui
+win32:RC_FILE = bell.rc
 
-ICON = bell.icns
+OTHER_FILES  += bell.icns \
+                bell.ico \
+                bell.rc \
+                bell.wav \
+                media-playback-start.png \
+                media-playback-stop.png
 
-OTHER_FILES += \
-    bell.ico \
-    media-playback-stop.png \
-    media-playback-start.png \
-    bell.wav
-
-RESOURCES += \
-    Resources.qrc
+RESOURCES   += Resources.qrc
